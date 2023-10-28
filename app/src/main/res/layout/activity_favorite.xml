@@ -10,6 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#052196F3"
         tools:context=".activity.FavoriteActivity">
 
         <ImageView
@@ -28,7 +29,8 @@
             android:fontFamily="@font/poppins_medium"
             android:text="@string/favorite"
             android:textColor="@color/black"
-            android:textSize="@dimen/_16sdp"
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/ivBack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +40,7 @@
             android:id="@+id/rvFavoriteItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/_4sdp"
             android:layout_marginTop="@dimen/_16sdp"
             app:layout_constraintTop_toBottomOf="@+id/ivBack"
             tools:itemCount="3"

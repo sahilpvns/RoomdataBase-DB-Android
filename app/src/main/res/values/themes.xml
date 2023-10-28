@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Base.Theme.Tummoc" parent="Theme.Material3.Light.NoActionBar">
+    <style name="Base.Theme.Tummoc" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">#FFC107</item>
         <item name="colorPrimaryDark">#FFC107</item>
         <item name="android:windowDisablePreview">true</item>

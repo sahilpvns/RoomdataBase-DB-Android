@@ -13,45 +13,52 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_8sdp"
+        android:layout_margin="@dimen/_4sdp"
         app:cardCornerRadius="@dimen/_10sdp"
+        android:outlineSpotShadowColor="#1A000000"
+        app:cardElevation="@dimen/_28sdp"
+        app:cardPreventCornerOverlap="true"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="@dimen/_12sdp">
+            android:padding="@dimen/_8sdp">
 
 
             <ImageView
                 android:id="@+id/ivFav"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_8sdp"
-                android:background="@drawable/like_item"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:padding="@dimen/_2sdp"
+                android:src="@drawable/like_item"
                 app:layout_constraintBottom_toBottomOf="@+id/tvItemName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tvItemName" />
 
             <ImageView
                 android:id="@+id/ivItemImg"
-                android:layout_width="@dimen/_70sdp"
-                android:layout_height="@dimen/_70sdp"
-                android:background="@mipmap/ic_launcher"
+                android:layout_width="@dimen/_52sdp"
+                android:layout_height="@dimen/_52sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvItemName"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:ellipsize="end"
                 android:layout_height="wrap_content"
+                android:lines="1"
                 android:layout_marginStart="@dimen/_16sdp"
                 android:fontFamily="@font/poppins_medium"
                 tools:text="Carrot"
+                android:paddingEnd="@dimen/_5sdp"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
                 android:text="@{item.name}"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp"
+                app:layout_constraintEnd_toStartOf="@+id/ivFav"
                 app:layout_constraintStart_toEndOf="@+id/ivItemImg"
                 app:layout_constraintTop_toTopOf="@+id/ivItemImg" />
 
@@ -63,7 +70,7 @@
                 android:fontFamily="@font/poppins_medium"
                 android:text="1 Unit"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_10sdp"
+                android:textSize="@dimen/_8sdp"
                 app:layout_constraintBottom_toBottomOf="@+id/ivItemImg"
                 app:layout_constraintStart_toEndOf="@+id/ivItemImg" />
 
@@ -74,17 +81,20 @@
                 android:layout_marginStart="@dimen/_16sdp"
                 android:fontFamily="@font/poppins_medium"
                 android:text="₹40/kg"
+                android:textSize="@dimen/_10sdp"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/tvItemPrice"
                 app:layout_constraintStart_toEndOf="@+id/tvItemPrice"
                 app:layout_constraintTop_toTopOf="@+id/tvItemPrice" />
 
             <ImageView
                 android:id="@+id/ivAdd"
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:background="@drawable/add_box"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:background="@drawable/shape_rect_orange"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/ic_add"
                 app:layout_constraintBottom_toBottomOf="@+id/tvItemPrice"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tvItemPrice" />

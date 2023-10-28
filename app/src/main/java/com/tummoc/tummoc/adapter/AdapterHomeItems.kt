@@ -60,7 +60,7 @@ class AdapterHomeItems(var item: ArrayList<CategoryInfo>?,var mListener:RItemLis
 
                 val drawable = ContextCompat.getDrawable(
                     itemBinding.root.context,
-                    if (item?.isShow == true) R.drawable.arrow_down else R.drawable.arrow_back
+                    if (item?.isShow == true) R.drawable.arrow_down else R.drawable.arrow_up
                 )
                 tvFood.setCompoundDrawablesWithIntrinsicBounds(null, null, drawable, null)
 

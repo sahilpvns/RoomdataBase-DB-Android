@@ -4,34 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-<variable
-    name="data"
-    type="com.tummoc.tummoc.network.db.entity.CategoryInfo" />
+
+        <variable
+            name="data"
+            type="com.tummoc.tummoc.network.db.entity.CategoryInfo" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="#052196F3"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvFood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginHorizontal="@dimen/_16sdp"
             android:drawableEnd="@drawable/arrow_down"
             android:fontFamily="@font/poppins_medium"
             android:text="@{data.name}"
-            tools:text="Food"
             android:textColor="@android:color/black"
             android:textSize="@dimen/_16sdp"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Food" />
 
         <View
             android:id="@+id/viewLine"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginHorizontal="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_10sdp"
             android:background="#D1DFFF"
             app:layout_constraintTop_toBottomOf="@+id/tvFood" />
 
@@ -40,10 +43,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8sdp"
-            app:layout_constraintTop_toBottomOf="@+id/viewLine"
-            tools:itemCount="8"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/viewLine"
+            tools:itemCount="8"
             tools:listitem="@layout/menu_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

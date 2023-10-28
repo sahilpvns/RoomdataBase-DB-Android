@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Tummoc</string>
+    <string name="food">Food</string>
+    <string name="gifts">Gifts</string>
+    <string name="drinks">Drinks</string>
+    <string name="favorite">Favorite</string>
+    <string name="cart">Cart</string>
+</resources>

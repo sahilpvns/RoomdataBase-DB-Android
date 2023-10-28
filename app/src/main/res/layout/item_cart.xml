@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="cart"
+            type="com.tummoc.tummoc.network.db.entity.UserCart" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_8sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/_12sdp">
+
+
+            <!--        <ImageView-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:layout_marginEnd="@dimen/_8sdp"-->
+            <!--            android:background="@drawable/like_item"-->
+            <!--            app:layout_constraintBottom_toBottomOf="@+id/tvItemName"-->
+            <!--            app:layout_constraintEnd_toEndOf="parent"-->
+            <!--            app:layout_constraintTop_toTopOf="@+id/tvItemName" />-->
+
+            <ImageView
+                android:id="@+id/ivItemImg"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_70sdp"
+                android:background="@mipmap/ic_launcher"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvItemName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:fontFamily="@font/poppins_medium"
+                tools:text="Carrot"
+                android:text="@{cart.name}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintStart_toEndOf="@+id/ivItemImg"
+                app:layout_constraintTop_toTopOf="@+id/ivItemImg" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvItemPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="1 Unit"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/ivItemImg"
+                app:layout_constraintStart_toEndOf="@+id/ivItemImg" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvItemRs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:fontFamily="@font/poppins_medium"
+                tools:text="₹40/kg"
+                android:text="@{`₹`+ cart.price}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvItemPrice"
+                app:layout_constraintStart_toEndOf="@+id/tvItemPrice"
+                app:layout_constraintTop_toTopOf="@+id/tvItemPrice" />
+
+            <ImageView
+                android:id="@+id/ivAddItem"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:background="@drawable/add_box"
+                app:layout_constraintBottom_toBottomOf="@+id/tvItemPrice"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvItemPrice" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvItemCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                tools:text="1"
+                android:text="@{``+cart.quantity}"
+
+                android:layout_marginStart="@dimen/_16sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvItemPrice"
+                app:layout_constraintStart_toEndOf="@+id/ivRemoveItem"
+                app:layout_constraintTop_toTopOf="@+id/tvItemPrice" />
+
+            <ImageView
+                android:id="@+id/ivRemoveItem"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:background="@drawable/add_box"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintStart_toEndOf="@+id/tvItemRs"
+                app:layout_constraintBottom_toBottomOf="@+id/tvItemPrice"
+                app:layout_constraintTop_toTopOf="@+id/tvItemPrice" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

@@ -14,10 +14,17 @@ import kotlinx.coroutines.withContext
 
 class CartRepo {
     private val scope = CoroutineScope(Dispatchers.IO)
+
+    /**
+     * insert the item in cart table or update the quantity
+     */
     fun insertItem(cartItem: MenuInfo?) {
         try {
             scope.launch {
                 withContext(CoroutineUtils.ioThread) {
+                    // get the value cart table by using id.
+                    // if item  == null  then add item in table
+                    //if item count greater then 1 then update the item quantity(by adding +1)
                     val item = TummocRoomDatabase.getDataBase()?.cartDao()
                         ?.getItemByMenuId(cartItem?.id ?: 0)
                     if (item == null) {
@@ -39,10 +46,16 @@ class CartRepo {
         }
     }
 
+    /**
+     * update the cart quantity (+1)
+     * @param cartItem to find the exiting cart using id
+     */
     fun itemPlus(cartItem: MenuInfo?) {
         try {
             scope.launch {
                 withContext(CoroutineUtils.ioThread) {
+                    // get the value cart table by using id.
+                    //if item is not null then  update the item quantity(by adding + 1)
                     val item = TummocRoomDatabase.getDataBase()?.cartDao()
                         ?.getItemByMenuId(cartItem?.id ?: 0)
                     if (item != null) {
@@ -56,12 +69,20 @@ class CartRepo {
         }
     }
 
+    /**
+     * Update the cart quantity (-1)
+     * @param cartItem to find the exiting cart using id
+     * @return void
+     *
+     */
     fun itemRemove(cartItem: MenuInfo?) {
         try {
             scope.launch {
                 withContext(CoroutineUtils.ioThread) {
-                    val item = TummocRoomDatabase.getDataBase()?.cartDao()
-                        ?.getItemByMenuId(cartItem?.id ?: 0)
+                    // get the value cart table by using id.
+                    // if item count == 1 then remove the it from table
+                    //if item count greater then 1 then update the item quantity(by remove - 1)
+                    val item = TummocRoomDatabase.getDataBase()?.cartDao()?.getItemByMenuId(cartItem?.id ?: 0)
                     if (item != null) {
                         if (item.quantity == 1) {
                             TummocRoomDatabase.getDataBase()?.cartDao()
@@ -81,6 +102,9 @@ class CartRepo {
     private var _allCartItem: MutableLiveData<List<UserCart>>? = MutableLiveData()
     fun observeCartItem() = _allCartItem
 
+    /**
+     * Get the all cart item from cart table
+     */
     fun getAllCartItem() {
         try {
             scope.launch {

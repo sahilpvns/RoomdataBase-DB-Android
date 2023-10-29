@@ -14,6 +14,10 @@ import kotlinx.coroutines.withContext
 
 class CategoryRepo {
     private val scope = CoroutineScope(Dispatchers.IO)
+
+    /**
+     * insert all Category list from local json
+     */
     fun insetCategory() {
         try {
             scope.launch {
@@ -34,6 +38,9 @@ class CategoryRepo {
         }
     }
 
+    /**
+     * get all category list from category table for showing to home screen
+     */
     fun getAllCategory(): MutableLiveData<ArrayList<CategoryInfo>> {
         val data: MutableLiveData<ArrayList<CategoryInfo>> = MutableLiveData()
         try {

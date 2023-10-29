@@ -40,8 +40,8 @@
             android:id="@+id/rvFavoriteItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_4sdp"
             android:layout_marginTop="@dimen/_16sdp"
+            android:padding="@dimen/_4sdp"
             app:layout_constraintTop_toBottomOf="@+id/ivBack"
             tools:itemCount="3"
             tools:listitem="@layout/item_favorite" />

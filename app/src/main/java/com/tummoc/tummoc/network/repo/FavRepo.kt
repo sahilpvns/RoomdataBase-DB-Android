@@ -14,6 +14,10 @@ import kotlinx.coroutines.withContext
 
 class FavRepo {
     val scope = CoroutineScope(Dispatchers.IO)
+
+    /**
+     * toogle the favourite item. means if item is added in favourite table then remove if not adding in table
+     */
     fun toggleFav( cartItem: MenuInfo?) {
         try {
             scope.launch {
@@ -40,6 +44,9 @@ class FavRepo {
     private var _allFavItem: MutableLiveData<ArrayList<UserFav>>? = MutableLiveData()
     fun observeFavItems() = _allFavItem
 
+    /**
+     * get the all user favourite list
+     */
     fun getAllFavItems() {
         try {
             scope.launch {

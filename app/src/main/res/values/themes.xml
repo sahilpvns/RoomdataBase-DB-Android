@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Tummoc" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">#FFC107</item>
-        <item name="colorPrimaryDark">#FFC107</item>
+        <item name="colorPrimaryDark">#B3FF9800</item>
         <item name="android:windowDisablePreview">true</item>
     </style>
 

@@ -13,25 +13,16 @@ import com.tummoc.tummoc.databinding.HomeMenuBinding
 import com.tummoc.tummoc.network.db.entity.CategoryInfo
 
 
-class AdapterHomeItems(var item: ArrayList<CategoryInfo>?,var mListener:RItemListener<CategoryInfo?>) :
-    RecyclerView.Adapter<AdapterHomeItems.ViewHolder>() {
-
+class AdapterHomeItems(var item: ArrayList<CategoryInfo>?, private var mListener:RItemListener<CategoryInfo?>) : RecyclerView.Adapter<AdapterHomeItems.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            HomeMenuBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
+        return ViewHolder(HomeMenuBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindData(item?.get(holder.adapterPosition),mListener)
         holder.itemBinding.tvFood.setOnClickListener {
-            item?.get(holder.adapterPosition)?.isShow =
-                !(item?.get(holder.adapterPosition)?.isShow ?: true)
+            item?.get(holder.adapterPosition)?.isShow = !(item?.get(holder.adapterPosition)?.isShow ?: true)
             notifyItemChanged(holder.adapterPosition)
         }
 
@@ -53,8 +44,7 @@ class AdapterHomeItems(var item: ArrayList<CategoryInfo>?,var mListener:RItemLis
         fun bindData(item: CategoryInfo?, mListener: RItemListener<CategoryInfo?>,) {
             itemBinding.apply {
                 data = item
-                rvMenu.layoutManager =
-                    LinearLayoutManager(itemBinding.root.context, RecyclerView.HORIZONTAL, false)
+                rvMenu.layoutManager = LinearLayoutManager(itemBinding.root.context, RecyclerView.HORIZONTAL, false)
                 rvMenu.adapter = MenuAdapter(item?.items,mListener)
                 itemBinding.rvMenu.isVisible = item?.isShow ?: true
 

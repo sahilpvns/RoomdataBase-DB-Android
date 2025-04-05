@@ -19,12 +19,11 @@ import com.tummoc.tummoc.network.db.entity.CategoryInfo
 import com.tummoc.tummoc.viewModel.HomeViewModel
 
 
-class DashBoardActivity : BaseActivity<ActivityMainBinding, HomeViewModel>(),
-    RItemListener<CategoryInfo?> {
+class DashBoardActivity : BaseActivity<ActivityMainBinding, HomeViewModel>(), RItemListener<CategoryInfo?> {
 
     private var mAdapterHomeItems: AdapterHomeItems? = null
     override fun provideBindingVariable() {
-        mViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        mViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
     }
 
     override fun provideLayoutId() = R.layout.activity_main
@@ -35,7 +34,7 @@ class DashBoardActivity : BaseActivity<ActivityMainBinding, HomeViewModel>(),
         toolbar()
         mBinding.apply {
             rvHomeItems.layoutManager = LinearLayoutManager(this@DashBoardActivity)
-            mAdapterHomeItems = AdapterHomeItems(ArrayList(), this@DashBoardActivity);
+            mAdapterHomeItems = AdapterHomeItems(ArrayList(), this@DashBoardActivity)
             rvHomeItems.adapter = mAdapterHomeItems
             btnCat.setOnClickListener {
                 categoriesAlert()
@@ -95,7 +94,7 @@ class DashBoardActivity : BaseActivity<ActivityMainBinding, HomeViewModel>(),
         view?.let {
             dialog.setContentView(it)
             dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-            dialog.window?.setGravity(Gravity.BOTTOM);
+            dialog.window?.setGravity(Gravity.BOTTOM)
             dialog.window?.setBackgroundDrawableResource(android.R.color.transparent);
             dialog.setCancelable(true)
             dialog.setCanceledOnTouchOutside(true)

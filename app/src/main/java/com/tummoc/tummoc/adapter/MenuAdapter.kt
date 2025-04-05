@@ -14,34 +14,24 @@ import com.tummoc.tummoc.network.repo.CartRepo
 import com.tummoc.tummoc.network.repo.FavRepo
 import com.tummoc.tummoc.utils.ImageUtils
 
-class MenuAdapter(var items: ArrayList<MenuInfo>?,var  mListener: RItemListener<CategoryInfo?>) :
+class MenuAdapter(private var items: ArrayList<MenuInfo>?, private var  mListener: RItemListener<CategoryInfo?>) :
     RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            MenuItemBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
+        return ViewHolder(MenuItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItem(items?.get(holder.adapterPosition))
         holder.itemBinding.ivAdd.setOnClickListener {
-            CartRepo().insertItem(
-                items?.get(holder.adapterPosition)
-            )
+            CartRepo().insertItem(items?.get(holder.adapterPosition))
             Toast.makeText(holder.itemBinding.root.context, "Item Add", Toast.LENGTH_SHORT).show()
             mListener.onItemClick(null,-1,-1)
         }
 
         holder.itemBinding.ivFav.setOnClickListener {
             FavRepo().toggleFav( items?.get(holder.adapterPosition))
-            items?.get(holder.adapterPosition)?.isFav =
-                !(items?.get(holder.adapterPosition)?.isFav ?: true)
+            items?.get(holder.adapterPosition)?.isFav = !(items?.get(holder.adapterPosition)?.isFav ?: true)
             notifyItemChanged(holder.adapterPosition)
         }
 
@@ -57,10 +47,7 @@ class MenuAdapter(var items: ArrayList<MenuInfo>?,var  mListener: RItemListener<
         fun bindItem(menu: MenuInfo?) {
             itemBinding.menu = menu
             ImageUtils.load(itemBinding.root.context, menu?.icon, itemBinding.ivItemImg)
-            val drawable = ContextCompat.getDrawable(
-                itemBinding.root.context,
-                if (menu?.isFav == true) R.drawable.like_item else R.drawable.favorite_border
-            )
+            val drawable = ContextCompat.getDrawable(itemBinding.root.context, if (menu?.isFav == true) R.drawable.like_item else R.drawable.favorite_border)
             itemBinding.ivFav.setImageDrawable(drawable)
 
         }

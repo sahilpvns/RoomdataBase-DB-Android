@@ -47,8 +47,7 @@ class CategoryRepo {
             scope.launch {
                 withContext(CoroutineUtils.ioThread) {
                     data.postValue(
-                        TummocRoomDatabase.getDataBase()?.dao()
-                            ?.getAll() as? ArrayList<CategoryInfo>?
+                        TummocRoomDatabase.getDataBase()?.dao()?.getAll() as? ArrayList<CategoryInfo>?
                     )
                 }
             }

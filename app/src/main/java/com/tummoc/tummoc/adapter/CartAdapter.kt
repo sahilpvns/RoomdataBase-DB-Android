@@ -10,9 +10,8 @@ import com.tummoc.tummoc.network.db.entity.UserCart
 import com.tummoc.tummoc.network.repo.CartRepo
 import com.tummoc.tummoc.utils.ImageUtils
 
-class CartAdapter(var mItems: ArrayList<UserCart>?, var mListener: RItemListener<UserCart?>) :
+class CartAdapter(var mItems: ArrayList<UserCart>?, private var mListener: RItemListener<UserCart?>) :
     RecyclerView.Adapter<CartAdapter.ViewHolder>() {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -23,15 +22,11 @@ class CartAdapter(var mItems: ArrayList<UserCart>?, var mListener: RItemListener
         holder.bindItem(mItems?.get(holder.adapterPosition))
 
         holder.itemBinding.ivAddItem.setOnClickListener {
-            CartRepo().itemPlus(
-                mItems?.get(holder.adapterPosition)
-            )
+            CartRepo().itemPlus(mItems?.get(holder.adapterPosition))
             mListener.onItemClick(mItems?.get(holder.adapterPosition), holder.adapterPosition, 100)
         }
         holder.itemBinding.ivRemoveItem.setOnClickListener {
-            CartRepo().itemRemove(
-                mItems?.get(holder.adapterPosition)
-            )
+            CartRepo().itemRemove(mItems?.get(holder.adapterPosition))
             mListener.onItemClick(mItems?.get(holder.adapterPosition), holder.adapterPosition, 100)
         }
     }

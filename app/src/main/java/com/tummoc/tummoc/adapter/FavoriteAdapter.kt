@@ -11,7 +11,7 @@ import com.tummoc.tummoc.network.repo.CartRepo
 import com.tummoc.tummoc.network.repo.FavRepo
 import com.tummoc.tummoc.utils.ImageUtils
 
-class FavoriteAdapter(var mItems: ArrayList<UserFav>?, var mListener: RItemListener<UserFav?>) :
+class FavoriteAdapter(private var mItems: ArrayList<UserFav>?, private var mListener: RItemListener<UserFav?>) :
     RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
 
     private lateinit var binding: ItemFavoriteBinding
@@ -25,19 +25,12 @@ class FavoriteAdapter(var mItems: ArrayList<UserFav>?, var mListener: RItemListe
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItem(mItems?.get(holder.adapterPosition))
         holder.itemBinding.ivFav.setOnClickListener {
-            FavRepo().toggleFav(
-                mItems?.get(holder.adapterPosition)
-            )
+            FavRepo().toggleFav(mItems?.get(holder.adapterPosition))
             mListener.onItemClick(mItems?.get(holder.adapterPosition), holder.adapterPosition, 100)
         }
         holder.itemBinding.ivAdd.setOnClickListener {
-            FavRepo().toggleFav(
-                mItems?.get(holder.adapterPosition)
-            )
-            CartRepo().insertItem(
-                mItems?.get(holder.adapterPosition)
-            )
-
+            FavRepo().toggleFav(mItems?.get(holder.adapterPosition))
+            CartRepo().insertItem(mItems?.get(holder.adapterPosition))
             mListener.onItemClick(mItems?.get(holder.adapterPosition), holder.adapterPosition, 100)
         }
     }

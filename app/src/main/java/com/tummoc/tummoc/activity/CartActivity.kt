@@ -12,9 +12,7 @@ import com.tummoc.tummoc.network.db.entity.UserCart
 import com.tummoc.tummoc.viewModel.UserViewModel
 
 class CartActivity : BaseActivity<ActivityCartBinding, UserViewModel>(), RItemListener<UserCart?> {
-
-    val mAdapter by lazy { CartAdapter(ArrayList(), this@CartActivity) }
-
+    private val mAdapter by lazy { CartAdapter(ArrayList(), this@CartActivity) }
 
     override fun provideBindingVariable() {
         mViewModel = ViewModelProvider(this)[UserViewModel::class.java]
@@ -49,13 +47,17 @@ class CartActivity : BaseActivity<ActivityCartBinding, UserViewModel>(), RItemLi
         }
 
         if (total == 0.0) {
-            mBinding.topPanel.visibility = View.GONE
-            mBinding.btnCheckOut.visibility = View.GONE
+            mBinding.apply {
+                topPanel.visibility = View.GONE
+                btnCheckOut.visibility = View.GONE
+            }
         } else {
-            mBinding.btnCheckOut.visibility = View.VISIBLE
-            mBinding.topPanel.visibility = View.VISIBLE
-            mBinding.tvSubTotalRS.text = "₹$total"
-            mBinding.tvTotalRs.text = "₹${total - 40}"
+            mBinding.apply {
+                btnCheckOut.visibility = View.VISIBLE
+                topPanel.visibility = View.VISIBLE
+                tvSubTotalRS.text = String.format("₹$total")
+                tvTotalRs.text = String.format("₹${total - 40}")
+            }
         }
 
     }

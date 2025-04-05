@@ -51,10 +51,7 @@ class FavRepo {
         try {
             scope.launch {
                 withContext(CoroutineUtils.ioThread) {
-                    _allFavItem?.postValue(
-                        TummocRoomDatabase.getDataBase()?.favDao()
-                            ?.getAllItem() as? ArrayList<UserFav>?
-                    )
+                    _allFavItem?.postValue(TummocRoomDatabase.getDataBase()?.favDao()?.getAllItem() as? ArrayList<UserFav>?)
                 }
             }
         } catch (e: Exception) {

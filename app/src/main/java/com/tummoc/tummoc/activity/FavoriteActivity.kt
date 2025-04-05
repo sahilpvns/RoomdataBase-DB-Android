@@ -40,7 +40,6 @@ class FavoriteActivity : BaseActivity<ActivityFavoriteBinding, UserViewModel>(),
         mViewModel.fetchAllFav()
     }
 
-
     override fun onItemClick(t: UserFav?, position: Int, action: Int) {
         if (action == 100) {
             setUpListener()

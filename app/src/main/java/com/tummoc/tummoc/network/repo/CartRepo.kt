@@ -25,8 +25,7 @@ class CartRepo {
                     // get the value cart table by using id.
                     // if item  == null  then add item in table
                     //if item count greater then 1 then update the item quantity(by adding +1)
-                    val item = TummocRoomDatabase.getDataBase()?.cartDao()
-                        ?.getItemByMenuId(cartItem?.id ?: 0)
+                    val item = TummocRoomDatabase.getDataBase()?.cartDao()?.getItemByMenuId(cartItem?.id ?: 0)
                     if (item == null) {
                         val userCart = UserCart().apply {
                             id = cartItem?.id
@@ -36,8 +35,7 @@ class CartRepo {
                         }
                         TummocRoomDatabase.getDataBase()?.cartDao()?.insert(userCart)
                     } else {
-                        TummocRoomDatabase.getDataBase()?.cartDao()
-                            ?.updateQuantity(item.id ?: 0, item.quantity.plus(1))
+                        TummocRoomDatabase.getDataBase()?.cartDao()?.updateQuantity(item.id ?: 0, item.quantity.plus(1))
                     }
                 }
             }
@@ -59,8 +57,7 @@ class CartRepo {
                     val item = TummocRoomDatabase.getDataBase()?.cartDao()
                         ?.getItemByMenuId(cartItem?.id ?: 0)
                     if (item != null) {
-                        TummocRoomDatabase.getDataBase()?.cartDao()
-                            ?.updateQuantity(item.id ?: 0, item.quantity.plus(1))
+                        TummocRoomDatabase.getDataBase()?.cartDao()?.updateQuantity(item.id ?: 0, item.quantity.plus(1))
                     }
                 }
             }
@@ -85,11 +82,9 @@ class CartRepo {
                     val item = TummocRoomDatabase.getDataBase()?.cartDao()?.getItemByMenuId(cartItem?.id ?: 0)
                     if (item != null) {
                         if (item.quantity == 1) {
-                            TummocRoomDatabase.getDataBase()?.cartDao()
-                                ?.deleteItem(item.id ?: 0)
+                            TummocRoomDatabase.getDataBase()?.cartDao()?.deleteItem(item.id ?: 0)
                         } else {
-                            TummocRoomDatabase.getDataBase()?.cartDao()
-                                ?.updateQuantity(item.id ?: 0, item.quantity.minus(1))
+                            TummocRoomDatabase.getDataBase()?.cartDao()?.updateQuantity(item.id ?: 0, item.quantity.minus(1))
                         }
                     }
                 }
@@ -109,9 +104,7 @@ class CartRepo {
         try {
             scope.launch {
                 withContext(CoroutineUtils.ioThread) {
-                    _allCartItem?.postValue(
-                        TummocRoomDatabase.getDataBase()?.cartDao()?.getAllItem()
-                    )
+                    _allCartItem?.postValue(TummocRoomDatabase.getDataBase()?.cartDao()?.getAllItem())
                 }
             }
         } catch (e: Exception) {
